@@ -22,6 +22,7 @@ The module of config-settings
 
 * [config-settings](#module_config-settings)
     * [.init(configObj, options)](#module_config-settings.init) ⇒ <code>this</code>
+    * [.setAlarm(alarm)](#module_config-settings.setAlarm)
     * [.loadVar(key)](#module_config-settings.loadVar) ⇒ <code>String</code> \| <code>Object</code>
     * [.loadNecessaryVar(key)](#module_config-settings.loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code>
     * [.loadNecessaryString(key)](#module_config-settings.loadNecessaryString) ⇒ <code>String</code>
@@ -43,6 +44,17 @@ Init the config-settings
 | configObj | <code>Object</code> | The configure object. |
 | options | <code>Object</code> |  |
 | [options.alarm] | <code>Object</code> | The alarm object, it should has the function of `sendAll`. |
+
+<a name="module_config-settings.setAlarm"></a>
+
+### config-settings.setAlarm(alarm)
+Set the alarm object
+
+**Kind**: static method of [<code>config-settings</code>](#module_config-settings)  
+
+| Param | Type |
+| --- | --- |
+| alarm | <code>Object</code> | 
 
 <a name="module_config-settings.loadVar"></a>
 
