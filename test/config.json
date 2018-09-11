@@ -1,0 +1,12 @@
+{
+    "var":"xxxx",
+    "integer":111,
+    "dir":"/var/xxx",
+    "dirNotExist":"1234567890qwerty",
+    "file":"/var/filename",
+    "fileDirExist":"/var/filenotexist",
+    "fileNotExist":"098987655oiouyuyt",
+    "int":11,
+    "notInt":"xx",
+    "url":"http://baidu.com"
+}
