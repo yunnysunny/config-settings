@@ -3,7 +3,7 @@ sudo: required
 
 #script: "sudo $(which npm) test"
 
-after_script: npm run coverage
+#after_script: npm run coverage
 
 node_js:
   - '10'

@@ -41,6 +41,14 @@ module.exports = {
         return this;
     },
     /**
+     * Set the alarm object
+     * 
+     * @param {Object} alarm
+     */
+    setAlarm : function(alarm) {
+        this.alarm = alarm;
+    }, 
+    /**
      * Get value by key
      * 
      * @param {KeyItem} key 
