@@ -9,7 +9,7 @@
 [travis-url]: https://travis-ci.org/yunnysunny/config-settings
 [david-image]: https://img.shields.io/david/yunnysunny/config-settings.svg?style=flat-square
 [david-url]: https://david-dm.org/yunnysunny/config-settings
-[node-image]: https://img.shields.io/badge/node.js-%3E=_6-green.svg?style=flat-square
+[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 
 [![NPM](https://nodei.co/npm/config-settings.png?downloads=true)](https://nodei.co/npm/node-config-settings/)  
