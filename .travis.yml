@@ -1,7 +1,7 @@
 language: node_js
 sudo: required
 
-script: sudo npm run test
+script: sudo $(which npm) test
 
 after_script: npm run coverage
 
