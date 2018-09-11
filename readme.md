@@ -2,14 +2,17 @@
 
 [![build status][travis-image]][travis-url]
 [![David deps][david-image]][david-url]
+[![Test coverage][coveralls-image]][coveralls-url]
 [![node version][node-image]][node-url]
 
 [npm-url]: https://npmjs.org/package/config-settings
 [travis-image]: https://img.shields.io/travis/yunnysunny/config-settings.svg?style=flat-square
 [travis-url]: https://travis-ci.org/yunnysunny/config-settings
+[coveralls-image]: https://img.shields.io/coveralls/yunnysunny/config-settings.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/yunnysunny/config-settings?branch=master
 [david-image]: https://img.shields.io/david/yunnysunny/config-settings.svg?style=flat-square
 [david-url]: https://david-dm.org/yunnysunny/config-settings
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
+[node-image]: https://img.shields.io/badge/node.js-%3E=_6-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 
 [![NPM](https://nodei.co/npm/config-settings.png?downloads=true)](https://nodei.co/npm/node-config-settings/)  
