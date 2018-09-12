@@ -1,3 +1,7 @@
+# v0.2.1
+## Fix
+1. Fix the issue of not call alarm function after load necessary object failed.
+
 # v0.2.0
 ## Add
 1. Add the function `setAlarm` to set the alarm object later.

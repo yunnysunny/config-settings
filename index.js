@@ -126,7 +126,7 @@ module.exports = {
     loadNecessaryObject : function(key) {
         var obj = this.loadVar(key);
         if (!obj || typeof (obj) != 'object') {
-            exitProcess('the value of ' +key+' is a necessary object ,but get '+ obj);
+            exitProcess('the value of ' +key+' is a necessary object ,but get '+ obj, this.alarm);
             return false;
         }
         return obj;
@@ -146,7 +146,7 @@ module.exports = {
         }
         if (!onlyCheckDirectory) {
             if (!fs.existsSync(filePath)) {
-                exitProcess('the value of ' +key+' is a necessary file ,but not exists in '+ filePath);
+                exitProcess('the value of ' +key+' is a necessary file ,but not exists in '+ filePath, this.alarm);
                 return false;
             }
         } else {
