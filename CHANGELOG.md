@@ -1,4 +1,5 @@
 # v0.2.2
+## Improve
 1. Bump node-slogger to 2.0.0.
 
 # v0.2.1
