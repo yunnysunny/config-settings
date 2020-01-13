@@ -1,6 +1,6 @@
 {
   "name": "config-settings",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,6 @@
     "sinon": "^6.2.0"
   },
   "dependencies": {
-    "node-slogger": "^1.0.1"
+    "node-slogger": "^2.0.0"
   }
 }
