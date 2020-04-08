@@ -2,17 +2,11 @@ var slogger = require('node-slogger');
 var fs = require('fs');
 var path = require('path');
 require('./string');
-var DELAY_TIME_BEFORE_EXIT = Number(process.env.DELAY_TIME_BEFORE_EXIT) || 10000;
+// var DELAY_TIME_BEFORE_EXIT = Number(process.env.DELAY_TIME_BEFORE_EXIT) || 10000;
 
-function exitProcess(reason,alarm) {
+function exitProcess(reason) {
     slogger.error(reason);
-    if (alarm) {
-        alarm.sendAll(reason);
-    }
-    setTimeout(function() {
-        process.exit(2);
-    },DELAY_TIME_BEFORE_EXIT);
-
+    throw new Error(reason);
 }
 
 /**
@@ -34,20 +28,14 @@ module.exports = {
      * @param {Object=} options.alarm The alarm object, it should has the function of `sendAll`.
      * @returns {this}
      */
+    // eslint-disable-next-line no-unused-vars
     init : function(configObj, options) {
         this.configObj = configObj;
         options = options || {};
-        this.alarm = options.alarm;
+        // this.alarm = options.alarm;
         return this;
     },
-    /**
-     * Set the alarm object
-     * 
-     * @param {Object} alarm
-     */
-    setAlarm : function(alarm) {
-        this.alarm = alarm;
-    }, 
+
     /**
      * Get value by key
      * 

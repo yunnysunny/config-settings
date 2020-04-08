@@ -1,3 +1,7 @@
+# v1.0.0
+## Breaking Changes
+1. Remove the function of `setAlarm`, it doesn't send alarm message when using wrong configuration item, throw an `Error` instead.
+
 # v0.2.2
 ## Improve
 1. Bump node-slogger to 2.0.0.

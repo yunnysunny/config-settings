@@ -1,12 +1,11 @@
 var chai = require('chai');
 var expect = chai.expect;
 var sinon  = require('sinon');
-var assert = require('assert');
 var fse = require('fs-extra');
 
 var config = require('../config.json');
 process.env.DELAY_TIME_BEFORE_EXIT = 1000;
-var DELAY_TIME = 1000 + 100;
+// var DELAY_TIME = 1000 + 100;
 describe('basic test:',function() {
     before(function() {
         sinon.stub(process, 'exit');
@@ -22,13 +21,11 @@ describe('basic test:',function() {
         expect(varstr).to.be.exist;
     });
 
-    it('fail if can nto load necessray var ',function(done) {
+    it('fail if can not load necessray var ',function() {
         var settings = require('../..').init(config);
-        settings.loadNecessaryVar('varNotExist');
-        setTimeout(function() {
-            assert(process.exit.calledWith(2));
-            done();
-        },DELAY_TIME);
+        expect(function() {
+            settings.loadNecessaryVar('varNotExist');
+        }).to.throw(Error);
     });
 
     it('success if load necessary directory ok',function() {
@@ -38,14 +35,11 @@ describe('basic test:',function() {
         expect(filepath).to.be.exist;
     });
 
-    it('fail if can not load necessary directory',function(done) {
+    it('fail if can not load necessary directory',function() {
         var settings = require('../..').init(config);
-
-        settings.loadNecessaryDirectory('dirNotExist');
-        setTimeout(function() {
-            assert(process.exit.calledWith(2));
-            done();
-        },DELAY_TIME);
+        expect(function() {
+            settings.loadNecessaryDirectory('dirNotExist');
+        }).to.throw(Error);
     });
 
     it('success if can load necessary integer',function() {
@@ -55,14 +49,12 @@ describe('basic test:',function() {
         expect(value).to.be.a('number');
     });
 
-    it('fail if can not load necessary integer',function(done) {
+    it('fail if can not load necessary integer',function() {
         var settings = require('../..').init(config);
 
-        settings.loadNecessaryInt('notInt');
-        setTimeout(function() {
-            assert(process.exit.calledWith(2));
-            done();
-        },DELAY_TIME);
+        expect(function() {
+            settings.loadNecessaryInt('notInt');
+        }).to.throw(Error);
     });
 
     it('success if load necessary file',function() {
@@ -78,13 +70,12 @@ describe('basic test:',function() {
         expect(filepath).to.be.exist;
     });
 
-    it('fail if can not load necessary file',function(done) {
+    it('fail if can not load necessary file',function() {
         var settings = require('../..').init(config);
-        settings.loadNecessaryFile('fileNotExist');
-        setTimeout(function() {
-            assert(process.exit.calledWith(2));
-            done();
-        },DELAY_TIME);
+
+        expect(function() {
+            settings.loadNecessaryFile('fileNotExist');
+        }).to.throw(Error);
     });
 
     it('success if load necessary url',function() {
@@ -93,22 +84,20 @@ describe('basic test:',function() {
         expect(url).to.be.exist;
     });
 
-    it('fail if can not load necessary url',function(done) {
+    it('fail if can not load necessary url',function() {
         var settings = require('../..').init(config);
-        settings.loadNecessaryUrl('xxurl');
-        setTimeout(function() {
-            assert(process.exit.calledWith(2));
-            done();
-        },DELAY_TIME);
+        
+        expect(function() {
+            settings.loadNecessaryUrl('xxurl');
+        }).to.throw(Error);
     });
 
-    it('fail if the loaded url not end with /',function(done) {
+    it('fail if the loaded url not end with /',function() {
         var settings = require('../..').init(config);
-        settings.loadNecessaryUrl('url',true);
-        setTimeout(function() {
-            assert(process.exit.calledWith(2));
-            done();
-        },DELAY_TIME);
+        
+        expect(function() {
+            settings.loadNecessaryUrl('url',true);
+        }).to.throw(Error);
     });
 });
 
