@@ -64,11 +64,7 @@ describe('basic test:',function() {
         expect(filepath).to.be.exist;
     });
 
-    it('success if the file\'s directory exist',function() {
-        var settings = require('../..').init(config);
-        var filepath = settings.loadNecessaryFile('fileDirExist');
-        expect(filepath).to.be.exist;
-    });
+
 
     it('fail if can not load necessary file',function() {
         var settings = require('../..').init(config);

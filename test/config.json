@@ -4,7 +4,7 @@
     "dir":"/home/travis/var/xxx",
     "dirNotExist":"1234567890qwerty",
     "file":"/home/travis/var/filename",
-    "fileDirExist":"/home/travis/var/filenotexist",
+    "fileDirExist":"/home/travis/var/fileexist",
     "fileNotExist":"098987655oiouyuyt",
     "int":11,
     "notInt":"xx",
