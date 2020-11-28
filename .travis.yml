@@ -9,7 +9,7 @@ env:
 before_script:
   - 'if [[ ! -f $CONSUL_DIR/consul ]]; then (mkdir -p $CONSUL_DIR && cd $CONSUL_DIR && wget https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip && unzip consul_${CONSUL_VERSION}_linux_amd64.zip); fi'
   - $CONSUL_DIR/consul --version
-  - $CONSUL_DIR/consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul &
+  - $CONSUL_DIR/consul agent -dev -bootstrap-expect 1 -data-dir /tmp/consul &
   # Wait for consul to elect itself as leader
   - sleep 5
 after_script: npm run coverage
