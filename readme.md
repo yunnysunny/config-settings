@@ -22,7 +22,7 @@
 npm install config-settings --save
 
 ## Usage
-
+### Use with JsonConfig
 ```json
 {
     "var":"xxxx",
@@ -39,17 +39,36 @@ npm install config-settings --save
 ```
 
 ```javascript
-var config = require('../config.json');
-var settings = require('config-settings').init(config);
+const config = require('../config.json');
+const {JsonConfig} = require('config-settings');
+const jsonConfig = new JsonConfig(config);
+var varstr = jsonConfig.loadNecessaryVar('var');//get xxxx
+var integer = jsonConfig.loadNecessaryVar('integer');//get 111
 
-var varstr = settings.loadNecessaryVar('var');//get xxxx
-var integer = settings.loadNecessaryVar('integer');//get 111
+```
 
+### Use with ConsulConfig
+
+```javascript
+const {ConsulConfig} = require('config-settings');
+const settings = new ConsulConfig(config);
+
+settings.loadNecessaryVar('var').then(function(value) {
+    const varstr =  value;
+});
+settings.loadNecessaryVar('integer').then(function(value) {
+    const integer =  value;
+});
+settings.allLoaded().then(function() {
+    //all loading progress finished
+}).catch(function() {
+
+});
 ```
 
 **Attention**
 
-When call the function start with `loadNecessary` failed, the process will exit with code 2.
+When call the function start with `loadNecessary` failed, the module will throw Error in asynchronous way.
 
 ## API
 

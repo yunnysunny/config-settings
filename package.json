@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha --recursive test/mocha --timeout 999999 --exit",
-    "coverage":"nyc report --reporter=text-lcov | coveralls",
-    "doc": "jsdoc2md index.js index.js > doc/api.md"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "doc": "jsdoc2md lib/*.js > doc/api.md"
   },
   "repository": {
     "type": "git",
@@ -26,12 +26,13 @@
     "chai": "^4.1.2",
     "coveralls": "^3.0.2",
     "fs-extra": "^7.0.0",
-    "jsdoc-to-markdown": "^4.0.1",
+    "jsdoc-to-markdown": "^6.0.1",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "sinon": "^6.2.0"
   },
   "dependencies": {
+    "consul": "^0.39.0",
     "node-slogger": "^2.0.0"
   }
 }

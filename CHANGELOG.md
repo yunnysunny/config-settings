@@ -1,3 +1,9 @@
+# v2.0.0
+## Breaking Changes
+1. Use new api.
+## Add
+1. Add support for consul.
+
 # v1.0.0
 ## Breaking Changes
 1. Remove the function of `setAlarm`, it doesn't send alarm message when using wrong configuration item, throw an `Error` instead.
