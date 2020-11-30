@@ -1,3 +1,7 @@
+# v2.0.2
+## Fix
+Fix the logical of `loadNecessaryObject` of `ConsulConfig`.
+
 # v2.0.1
 ## Fix
 Fix the name spelling of the property of `ConsulConfig`。

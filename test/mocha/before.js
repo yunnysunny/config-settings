@@ -9,7 +9,13 @@ if (!host || !port) {
 const _consul = consul({host, port, promisify: true});
 const promises = [];
 for (var key in configObject) {
-    promises.push(_consul.kv.set(key, configObject[key] + ''));
+    let value = configObject[key];
+    if (typeof (value) === 'object') {
+        value = JSON.stringify(value);
+    } else {
+        value = value + '';
+    }
+    promises.push(_consul.kv.set(key,  value));
 }
 
 before(function(done) {

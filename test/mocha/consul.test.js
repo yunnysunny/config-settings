@@ -47,6 +47,13 @@ describe('basic test:',function() {
         expect(varstr).to.be.exist;
     });
 
+    it('succeeds if load necessary object ok',async function () {
+        var settings = require('../..').getInstance(config);
+
+        var varstr = await settings.loadNecessaryObject('object');
+        expect(varstr).to.be.exist;
+    });
+
     it('fail if can not load necessray var ',function(done) {
         // var settings = require('../..').getInstance(config);
         

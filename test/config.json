@@ -8,5 +8,8 @@
     "fileNotExist":"098987655oiouyuyt",
     "int":11,
     "notInt":"xx",
-    "url":"http://baidu.com"
+    "url":"http://baidu.com",
+    "object": {
+        "key1": "value1"
+    }
 }
