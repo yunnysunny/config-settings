@@ -1,7 +1,7 @@
 {
   "name": "config-settings",
   "version": "2.0.1",
-  "description": "",
+  "description": "Reading configuration from json file or consul.",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha --recursive test/mocha --timeout 999999 --exit",
