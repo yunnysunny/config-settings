@@ -166,7 +166,7 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 | --- | --- | --- |
 | option | <code>Object</code> |  |
 | option.consulAddr | <code>String</code> | The consul address, in the format of `ip:port`。 |
-| option.pathPerfix | <code>String</code> | The perfix of consul key element. |
+| option.pathPrefix | <code>String</code> | The prefix of consul key element. |
 
 <a name="AbstractConfig+allLoaded"></a>
 

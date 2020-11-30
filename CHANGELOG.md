@@ -1,3 +1,7 @@
+# v2.0.1
+## Fix
+Fix the name spelling of the property of `ConsulConfig`。
+
 # v2.0.0
 ## Breaking Changes
 1. Use new [api](doc/api.md).
