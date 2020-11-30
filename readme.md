@@ -51,7 +51,7 @@ var integer = jsonConfig.loadNecessaryVar('integer');//get 111
 
 ```javascript
 const {ConsulConfig} = require('config-settings');
-const settings = new ConsulConfig(config);
+const settings = new ConsulConfig({consulAddr:'127.0.0.1:8500'});
 
 settings.loadNecessaryVar('var').then(function(value) {
     const varstr =  value;
