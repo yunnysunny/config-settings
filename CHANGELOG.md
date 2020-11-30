@@ -1,6 +1,6 @@
 # v2.0.0
 ## Breaking Changes
-1. Use new api.
+1. Use new [api](doc/api.md).
 ## Add
 1. Add support for consul.
 
