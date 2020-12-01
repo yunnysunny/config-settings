@@ -4,6 +4,7 @@ var expect = chai.expect;
 var sinon  = require('sinon');
 var fse = require('fs-extra');
 var child_process = require('child_process');
+const slogger = require('node-slogger');
 
 const configObject = require('../config.json');
 var config = {type: 'consul', consulAddr: process.env.CONSUL_SERVER};
@@ -23,7 +24,7 @@ function forkChild(key, done) {
             return;
         } else {
             if (!hasDone) {
-                return console.error('unexception error', data);
+                return slogger.error('unexception error', data);
             }
         }
 
@@ -39,10 +40,6 @@ describe('basic test:',function() {
 
     it('succeeds if load necessary var ok',async function () {
         var settings = require('../..').getInstance(config);
-        // settings.loadNecessaryVar('var').then(function(value) {
-        //     console.log(value);
-        //     done();
-        // });
         var varstr = await settings.loadNecessaryVar('var');
         expect(varstr).to.be.exist;
     });
@@ -55,10 +52,6 @@ describe('basic test:',function() {
     });
 
     it('fail if can not load necessray var ',function(done) {
-        // var settings = require('../..').getInstance(config);
-        
-        // settings.loadNecessaryVar('varNotExist');
-        // failedWithExit(done);
         forkChild('varNotExist', done);
     });
 
@@ -70,9 +63,6 @@ describe('basic test:',function() {
     });
 
     it('fail if can not load necessary directory',function(done) {
-        // var settings = require('../..').getInstance(config);
-        // settings.loadNecessaryDirectory('dirNotExist');
-        // failedWithExit(done);
         forkChild('dirNotExist', done);
     });
 
@@ -84,10 +74,6 @@ describe('basic test:',function() {
     });
 
     it('fail if can not load necessary integer',function(done) {
-        // var settings = require('../..').getInstance(config);
-
-        // settings.loadNecessaryInt('notInt');
-        // failedWithExit(done);
         forkChild('notInt', done);
     });
 
@@ -101,10 +87,6 @@ describe('basic test:',function() {
 
 
     it('fail if can not load necessary file',function(done) {
-        // var settings = require('../..').getInstance(config);
-
-        // settings.loadNecessaryFile('fileNotExist');
-        // failedWithExit(done);
         forkChild('fileNotExist', done);
     });
 
@@ -115,19 +97,19 @@ describe('basic test:',function() {
     });
 
     it('fail if can not load necessary url',function(done) {
-        // var settings = require('../..').getInstance(config);
-        
-        // settings.loadNecessaryUrl('xxurl');
-        // failedWithExit(done);
         forkChild('xxurl', done);
     });
 
     it('fail if the loaded url not end with /',function(done) {
-        // var settings = require('../..').getInstance(config);
-        
-        // settings.loadNecessaryUrl('url',true);
-        // failedWithExit(done);
         forkChild('varNotExist', done);
+    });
+    it('success when all loaded', function(done) {
+        var settings = require('../..').getInstance(config);
+        settings.loadNecessaryVar('var');
+        settings.loadNecessaryObject('object');
+        settings.allLoaded().then(function() {
+            done();
+        });
     });
 });
 

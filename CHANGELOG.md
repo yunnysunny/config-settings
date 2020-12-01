@@ -1,3 +1,7 @@
+# v2.0.3
+## Fix
+Fix the broken of `allLoaded` of `AbstractConfig`.
+
 # v2.0.2
 ## Fix
 Fix the logical of `loadNecessaryObject` of `ConsulConfig`.
