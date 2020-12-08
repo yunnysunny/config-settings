@@ -7,7 +7,8 @@ var child_process = require('child_process');
 const slogger = require('node-slogger');
 
 const configObject = require('../config.json');
-var config = {type: 'consul', consulAddr: process.env.CONSUL_SERVER};
+const {CONSUL_PATH_PREFIX} = require('./before');
+var config = {type: 'consul', consulAddr: process.env.CONSUL_SERVER, pathPrefix: CONSUL_PATH_PREFIX};
 // process.env.DELAY_TIME_BEFORE_EXIT = 1000;
 
 function forkChild(key, done) {

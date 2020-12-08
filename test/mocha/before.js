@@ -1,6 +1,7 @@
 const consul = require('consul');
 const configObject = require('../config.json');
 const CONSUL_SERVER = process.env.CONSUL_SERVER;
+const CONSUL_PATH_PREFIX = exports.CONSUL_PATH_PREFIX = 'tmp/';
 
 const [host, port] = CONSUL_SERVER.split(':');
 if (!host || !port) {
@@ -15,7 +16,7 @@ for (var key in configObject) {
     } else {
         value = value + '';
     }
-    promises.push(_consul.kv.set(key,  value));
+    promises.push(_consul.kv.set(CONSUL_PATH_PREFIX + key,  value));
 }
 
 before(function(done) {
