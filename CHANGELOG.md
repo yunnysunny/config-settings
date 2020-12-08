@@ -1,14 +1,19 @@
+# v2.1.0
+## Improve
+1. Call `loadNecessaryString` in `loadNecessaryFile`.
+2. Print the given key's value to console.
+
 # v2.0.3
 ## Fix
-Fix the broken of `allLoaded` of `AbstractConfig`.
+1. Fix the broken of `allLoaded` of `AbstractConfig`.
 
 # v2.0.2
 ## Fix
-Fix the logical of `loadNecessaryObject` of `ConsulConfig`.
+1. Fix the logical of `loadNecessaryObject` of `ConsulConfig`.
 
 # v2.0.1
 ## Fix
-Fix the name spelling of the property of `ConsulConfig`。
+1. Fix the name spelling of the property of `ConsulConfig`。
 
 # v2.0.0
 ## Breaking Changes

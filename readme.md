@@ -74,6 +74,11 @@ When call the function start with `loadNecessary` failed, the module will throw 
 
 See the document of [api](doc/api.md)
 
+
+## Test
+
+You should set the environment variable of `CONSUL_SERVER` in format of `ip:port` before `npm run`.
+
 ## License
 
 [MIT](LICENSE)
