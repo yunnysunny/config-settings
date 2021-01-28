@@ -5,7 +5,16 @@
 <dd></dd>
 <dt><a href="#ConsulConfig">ConsulConfig</a> ⇐ <code><a href="#AbstractConfig">AbstractConfig</a></code></dt>
 <dd></dd>
+<dt><a href="#ConsulConfigSync">ConsulConfigSync</a> ⇐ <code><a href="#AbstractConfig">AbstractConfig</a></code></dt>
+<dd></dd>
 <dt><a href="#JsonConfig">JsonConfig</a> ⇐ <code><a href="#AbstractConfig">AbstractConfig</a></code></dt>
+<dd></dd>
+</dl>
+
+## Functions
+
+<dl>
+<dt><a href="#getConfigFromConsulSync">getConfigFromConsulSync(option)</a></dt>
 <dd></dd>
 </dl>
 
@@ -274,6 +283,141 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 | key | [<code>KeyItem</code>](#KeyItem) |  |  |
 | [endWithSeparator] | <code>Boolean</code> | <code>false</code> | If set ture, the key must be end with `/`. |
 
+<a name="ConsulConfigSync"></a>
+
+## ConsulConfigSync ⇐ [<code>AbstractConfig</code>](#AbstractConfig)
+**Kind**: global class  
+**Extends**: [<code>AbstractConfig</code>](#AbstractConfig)  
+
+* [ConsulConfigSync](#ConsulConfigSync) ⇐ [<code>AbstractConfig</code>](#AbstractConfig)
+    * [new ConsulConfigSync(option)](#new_ConsulConfigSync_new)
+    * [.allLoaded()](#AbstractConfig+allLoaded) ⇒ <code>Promise</code>
+    * [.loadVar(key)](#AbstractConfig+loadVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
+    * [.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code>
+    * [.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code>
+    * [.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code>
+    * [.loadNecessaryObject(key)](#AbstractConfig+loadNecessaryObject) ⇒ <code>Promise</code> \| <code>Object</code>
+    * [.loadNecessaryFile(key, [onlyCheckDirectory])](#AbstractConfig+loadNecessaryFile) ⇒ <code>Promise</code> \| <code>String</code>
+    * [.loadNecessaryDirectory(key, [endWithSeparator])](#AbstractConfig+loadNecessaryDirectory) ⇒ <code>Promise</code> \| <code>String</code>
+    * [.loadNecessaryUrl(key, [endWithSeparator])](#AbstractConfig+loadNecessaryUrl) ⇒ <code>Promise</code> \| <code>String</code>
+
+<a name="new_ConsulConfigSync_new"></a>
+
+### new ConsulConfigSync(option)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| option | <code>Object</code> |  |
+| option.consulAddr | <code>String</code> | The consul address, in the format of `ip:port`. |
+| option.pathPrefix | <code>String</code> | The prefix of consul key element. |
+| option.keys | <code>Array.&lt;String&gt;</code> | The consul keys' name. |
+
+<a name="AbstractConfig+allLoaded"></a>
+
+### consulConfigSync.allLoaded() ⇒ <code>Promise</code>
+Check if all loading has been finished.
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>allLoaded</code>](#AbstractConfig+allLoaded)  
+<a name="AbstractConfig+loadVar"></a>
+
+### consulConfigSync.loadVar(key) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
+Get value by key
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>loadVar</code>](#AbstractConfig+loadVar)  
+
+| Param | Type |
+| --- | --- |
+| key | [<code>KeyItem</code>](#KeyItem) | 
+
+<a name="AbstractConfig+loadNecessaryVar"></a>
+
+### consulConfigSync.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code>
+Get value by key, the value must be exist, otherwise the process will exit.
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>loadNecessaryVar</code>](#AbstractConfig+loadNecessaryVar)  
+
+| Param | Type |
+| --- | --- |
+| key | [<code>KeyItem</code>](#KeyItem) | 
+
+<a name="AbstractConfig+loadNecessaryString"></a>
+
+### consulConfigSync.loadNecessaryString(key) ⇒ <code>String</code>
+Get string value by key, the value must be exist, otherwise the process will exit.
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>loadNecessaryString</code>](#AbstractConfig+loadNecessaryString)  
+
+| Param | Type |
+| --- | --- |
+| key | [<code>KeyItem</code>](#KeyItem) | 
+
+<a name="AbstractConfig+loadNecessaryInt"></a>
+
+### consulConfigSync.loadNecessaryInt(key) ⇒ <code>Integer</code>
+Get integer value by key, the value must be exist, otherwise the process will exit.
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>loadNecessaryInt</code>](#AbstractConfig+loadNecessaryInt)  
+
+| Param | Type |
+| --- | --- |
+| key | [<code>KeyItem</code>](#KeyItem) | 
+
+<a name="AbstractConfig+loadNecessaryObject"></a>
+
+### consulConfigSync.loadNecessaryObject(key) ⇒ <code>Promise</code> \| <code>Object</code>
+Get object value by key, the value must be exist, otherwise the process will exit.
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>loadNecessaryObject</code>](#AbstractConfig+loadNecessaryObject)  
+
+| Param | Type |
+| --- | --- |
+| key | [<code>KeyItem</code>](#KeyItem) | 
+
+<a name="AbstractConfig+loadNecessaryFile"></a>
+
+### consulConfigSync.loadNecessaryFile(key, [onlyCheckDirectory]) ⇒ <code>Promise</code> \| <code>String</code>
+Get file path by key, the value must be exist, otherwise the process will exit.
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>loadNecessaryFile</code>](#AbstractConfig+loadNecessaryFile)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| key | [<code>KeyItem</code>](#KeyItem) |  |  |
+| [onlyCheckDirectory] | <code>Boolean</code> | <code>false</code> | If set true, only check whether the directory that the file saved is exist. |
+
+<a name="AbstractConfig+loadNecessaryDirectory"></a>
+
+### consulConfigSync.loadNecessaryDirectory(key, [endWithSeparator]) ⇒ <code>Promise</code> \| <code>String</code>
+Get directory path by key, the value must be exist, otherwise the process will exit.
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>loadNecessaryDirectory</code>](#AbstractConfig+loadNecessaryDirectory)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| key | [<code>KeyItem</code>](#KeyItem) |  |  |
+| [endWithSeparator] | <code>Boolean</code> | <code>false</code> | If set ture, the key must be end with `/`(Linux) or `\`(Windows). |
+
+<a name="AbstractConfig+loadNecessaryUrl"></a>
+
+### consulConfigSync.loadNecessaryUrl(key, [endWithSeparator]) ⇒ <code>Promise</code> \| <code>String</code>
+Get URL by key, the value must be exist, otherwise the process will exit.
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>loadNecessaryUrl</code>](#AbstractConfig+loadNecessaryUrl)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| key | [<code>KeyItem</code>](#KeyItem) |  |  |
+| [endWithSeparator] | <code>Boolean</code> | <code>false</code> | If set ture, the key must be end with `/`. |
+
 <a name="JsonConfig"></a>
 
 ## JsonConfig ⇐ [<code>AbstractConfig</code>](#AbstractConfig)
@@ -406,6 +550,19 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 | --- | --- | --- | --- |
 | key | [<code>KeyItem</code>](#KeyItem) |  |  |
 | [endWithSeparator] | <code>Boolean</code> | <code>false</code> | If set ture, the key must be end with `/`. |
+
+<a name="getConfigFromConsulSync"></a>
+
+## getConfigFromConsulSync(option)
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| option | <code>Object</code> |  |
+| option.consulAddr | <code>String</code> | The consul address, in the format of `ip:port`. |
+| option.pathPrefix | <code>String</code> | The prefix of consul key element. |
+| option.savePath | <code>String</code> | The full path name of the generated config file. |
+| option.keys | <code>Array.&lt;String&gt;</code> | The consul keys' name. |
 
 <a name="KeyItem"></a>
 

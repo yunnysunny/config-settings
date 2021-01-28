@@ -8,6 +8,8 @@ module.exports = {
     // consulConfig: require('./lib/consul_config')
     ConsulConfig: require('./lib/ConsulConfig'),
     JsonConfig: require('./lib/JsonConfig'),
+    ConsulSyncConfig: require('./lib/ConsulConfigSync'),
+    util: require('./lib/util'),
     getInstance: function(option) {
         if (option.type === 'consul') {
             return new this.ConsulConfig(option);

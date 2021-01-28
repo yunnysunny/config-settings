@@ -1,3 +1,7 @@
+# v2.2.0
+## Add
+1. Add class `ConsulConfigSync` to load config in synchronized way.
+
 # v2.1.0
 ## Improve
 1. Call `loadNecessaryString` in `loadNecessaryFile`.
