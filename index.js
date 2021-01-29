@@ -13,6 +13,8 @@ module.exports = {
     getInstance: function(option) {
         if (option.type === 'consul') {
             return new this.ConsulConfig(option);
+        } else if (option.type === 'consul-sync') {
+            return new this.ConsulSyncConfig(option);
         }
         return new this.JsonConfig(option);
     }
