@@ -1,8 +1,14 @@
-var config = {type: 'consul', consulAddr: process.env.CONSUL_SERVER};
+const key = process.argv[2];
+const type = process.argv[3];
+let obj = process.argv[4];
+if (type === 'json') {
+    obj = JSON.parse(obj);
+}
+var config = {type, configObject: obj, consulAddr: process.env.CONSUL_SERVER};
 
 var settings = require('../..').getInstance(config);
 
-const key = process.argv[2];
+
 switch (key) {
 case 'varNotExist':
     settings.loadNecessaryVar('varNotExist');
@@ -23,5 +29,7 @@ case 'url':
     settings.loadNecessaryUrl('url',true);
     break;
 default:
+    // eslint-disable-next-line no-console
+    console.error('not support test key', key);
     break;
 }

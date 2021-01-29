@@ -1,36 +1,15 @@
 var chai = require('chai');
-const path = require('path');
 var expect = chai.expect;
 var sinon  = require('sinon');
 var fse = require('fs-extra');
-var child_process = require('child_process');
-const slogger = require('node-slogger');
+const forkChild = require('../util/mocha_util').forkChild('consul');
 
 const configObject = require('../config.json');
 const {CONSUL_PATH_PREFIX} = require('./before');
 var config = {type: 'consul', consulAddr: process.env.CONSUL_SERVER, pathPrefix: CONSUL_PATH_PREFIX};
 // process.env.DELAY_TIME_BEFORE_EXIT = 1000;
 
-function forkChild(key, done) {
-    const child = child_process.fork(path.join(__dirname,'./child_process.js'),[key], {
-        silent: true
-    });
-    let hasDone = false;
-    child.stdout.setEncoding('utf8');
-    child.stdout.on('data', function(data){
-        if ((data).indexOf('ERROR') !== -1 && !hasDone) {
-            hasDone = true;
-            return done();
-        } else if (data.indexOf('Uncaught Error') !== -1) {
-            return;
-        } else {
-            if (!hasDone) {
-                return slogger.error('unexception error', data);
-            }
-        }
 
-    });
-}
 describe('basic test:',function() {
     before(function() {
         sinon.stub(process, 'exit');
@@ -102,7 +81,7 @@ describe('basic test:',function() {
     });
 
     it('fail if the loaded url not end with /',function(done) {
-        forkChild('varNotExist', done);
+        forkChild('url', done);
     });
     it('success when all loaded', function(done) {
         var settings = require('../..').getInstance(config);

@@ -2,7 +2,9 @@ var chai = require('chai');
 var expect = chai.expect;
 var sinon  = require('sinon');
 var fse = require('fs-extra');
+
 const configObject = require('../config.json');
+const forkChild = require('../util/mocha_util').forkChild('json', configObject);
 var config = {configObject};
 process.env.DELAY_TIME_BEFORE_EXIT = 1000;
 // var DELAY_TIME = 1000 + 100;
@@ -21,11 +23,8 @@ describe('basic test:',function() {
         expect(varstr).to.be.exist;
     });
 
-    it('fail if can not load necessray var ',function() {
-        var settings = require('../..').getInstance(config);
-        expect(function() {
-            settings.loadNecessaryVar('varNotExist');
-        }).to.throw(Error);
+    it('fail if can not load necessray var ',function(done) {
+        forkChild('varNotExist', done);
     });
 
     it('success if load necessary directory ok',function() {
@@ -35,11 +34,8 @@ describe('basic test:',function() {
         expect(filepath).to.be.exist;
     });
 
-    it('fail if can not load necessary directory',function() {
-        var settings = require('../..').getInstance(config);
-        expect(function() {
-            settings.loadNecessaryDirectory('dirNotExist');
-        }).to.throw(Error);
+    it('fail if can not load necessary directory',function(done) {
+        forkChild('dirNotExist', done);
     });
 
     it('success if can load necessary integer',function() {
@@ -49,12 +45,8 @@ describe('basic test:',function() {
         expect(value).to.be.a('number');
     });
 
-    it('fail if can not load necessary integer',function() {
-        var settings = require('../..').getInstance(config);
-
-        expect(function() {
-            settings.loadNecessaryInt('notInt');
-        }).to.throw(Error);
+    it('fail if can not load necessary integer',function(done) {
+        forkChild('notInt', done);
     });
 
     it('success if load necessary file',function() {
@@ -66,12 +58,8 @@ describe('basic test:',function() {
 
 
 
-    it('fail if can not load necessary file',function() {
-        var settings = require('../..').getInstance(config);
-
-        expect(function() {
-            settings.loadNecessaryFile('fileNotExist');
-        }).to.throw(Error);
+    it('fail if can not load necessary file',function(done) {
+        forkChild('fileNotExist', done);
     });
 
     it('success if load necessary url',function() {
@@ -80,20 +68,12 @@ describe('basic test:',function() {
         expect(url).to.be.exist;
     });
 
-    it('fail if can not load necessary url',function() {
-        var settings = require('../..').getInstance(config);
-        
-        expect(function() {
-            settings.loadNecessaryUrl('xxurl');
-        }).to.throw(Error);
+    it('fail if can not load necessary url',function(done) {
+        forkChild('xxurl', done);
     });
 
-    it('fail if the loaded url not end with /',function() {
-        var settings = require('../..').getInstance(config);
-        
-        expect(function() {
-            settings.loadNecessaryUrl('url',true);
-        }).to.throw(Error);
+    it('fail if the loaded url not end with /',function(done) {
+        forkChild('url', done);
     });
 });
 
