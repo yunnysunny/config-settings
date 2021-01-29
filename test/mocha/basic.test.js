@@ -21,6 +21,8 @@ describe('basic test:',function() {
 
         var varstr = settings.loadNecessaryVar('var');
         expect(varstr).to.be.exist;
+        var varFromMap = settings.getAllConfig().get('var');
+        expect(varFromMap).to.be.exist;
     });
 
     it('fail if can not load necessray var ',function(done) {

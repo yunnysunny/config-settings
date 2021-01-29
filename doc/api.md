@@ -5,7 +5,7 @@
 <dd></dd>
 <dt><a href="#ConsulConfig">ConsulConfig</a> ⇐ <code><a href="#AbstractConfig">AbstractConfig</a></code></dt>
 <dd></dd>
-<dt><a href="#ConsulConfigSync">ConsulConfigSync</a> ⇐ <code><a href="#AbstractConfig">AbstractConfig</a></code></dt>
+<dt><a href="#ConsulConfigSync">ConsulConfigSync</a> ⇐ <code><a href="#JsonConfig">JsonConfig</a></code></dt>
 <dd></dd>
 <dt><a href="#JsonConfig">JsonConfig</a> ⇐ <code><a href="#AbstractConfig">AbstractConfig</a></code></dt>
 <dd></dd>
@@ -32,17 +32,34 @@
 **Kind**: global abstract class  
 
 * *[AbstractConfig](#AbstractConfig)*
+    * *[new AbstractConfig(option)](#new_AbstractConfig_new)*
+    * *[.getAllConfig()](#AbstractConfig+getAllConfig) ⇒ <code>Map.&lt;String, ?&gt;</code>*
     * *[.allLoaded()](#AbstractConfig+allLoaded) ⇒ <code>Promise</code>*
     * **[._loadVar(key)](#AbstractConfig+_loadVar) ⇒ <code>any</code>**
     * *[.loadVar(key)](#AbstractConfig+loadVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>*
-    * *[.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code>*
-    * *[.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code>*
-    * *[.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code>*
+    * *[.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>*
+    * *[.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code> \| <code>Promise</code>*
+    * *[.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code> \| <code>Promise</code>*
     * *[.loadNecessaryObject(key)](#AbstractConfig+loadNecessaryObject) ⇒ <code>Promise</code> \| <code>Object</code>*
     * *[.loadNecessaryFile(key, [onlyCheckDirectory])](#AbstractConfig+loadNecessaryFile) ⇒ <code>Promise</code> \| <code>String</code>*
     * *[.loadNecessaryDirectory(key, [endWithSeparator])](#AbstractConfig+loadNecessaryDirectory) ⇒ <code>Promise</code> \| <code>String</code>*
     * *[.loadNecessaryUrl(key, [endWithSeparator])](#AbstractConfig+loadNecessaryUrl) ⇒ <code>Promise</code> \| <code>String</code>*
 
+<a name="new_AbstractConfig_new"></a>
+
+### *new AbstractConfig(option)*
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| option | <code>Object</code> |  |  |
+| [option.waitTimeBeforeThrowErrorMs] | <code>Number</code> | <code>0</code> | The wait time before trigger error when the value returned is not expected. The default value is `0`, but it will throw the error in async way even if you set the parameter to `0`. |
+
+<a name="AbstractConfig+getAllConfig"></a>
+
+### *abstractConfig.getAllConfig() ⇒ <code>Map.&lt;String, ?&gt;</code>*
+Get all loaded config
+
+**Kind**: instance method of [<code>AbstractConfig</code>](#AbstractConfig)  
 <a name="AbstractConfig+allLoaded"></a>
 
 ### *abstractConfig.allLoaded() ⇒ <code>Promise</code>*
@@ -71,7 +88,7 @@ Get value by key
 
 <a name="AbstractConfig+loadNecessaryVar"></a>
 
-### *abstractConfig.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code>*
+### *abstractConfig.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>*
 Get value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>AbstractConfig</code>](#AbstractConfig)  
@@ -82,7 +99,7 @@ Get value by key, the value must be exist, otherwise the process will exit.
 
 <a name="AbstractConfig+loadNecessaryString"></a>
 
-### *abstractConfig.loadNecessaryString(key) ⇒ <code>String</code>*
+### *abstractConfig.loadNecessaryString(key) ⇒ <code>String</code> \| <code>Promise</code>*
 Get string value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>AbstractConfig</code>](#AbstractConfig)  
@@ -93,7 +110,7 @@ Get string value by key, the value must be exist, otherwise the process will exi
 
 <a name="AbstractConfig+loadNecessaryInt"></a>
 
-### *abstractConfig.loadNecessaryInt(key) ⇒ <code>Integer</code>*
+### *abstractConfig.loadNecessaryInt(key) ⇒ <code>Integer</code> \| <code>Promise</code>*
 Get integer value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>AbstractConfig</code>](#AbstractConfig)  
@@ -157,11 +174,12 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 
 * [ConsulConfig](#ConsulConfig) ⇐ [<code>AbstractConfig</code>](#AbstractConfig)
     * [new ConsulConfig(option)](#new_ConsulConfig_new)
+    * [.getAllConfig()](#AbstractConfig+getAllConfig) ⇒ <code>Map.&lt;String, ?&gt;</code>
     * [.allLoaded()](#AbstractConfig+allLoaded) ⇒ <code>Promise</code>
     * [.loadVar(key)](#AbstractConfig+loadVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
-    * [.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code>
-    * [.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code>
-    * [.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code>
+    * [.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
+    * [.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code> \| <code>Promise</code>
+    * [.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code> \| <code>Promise</code>
     * [.loadNecessaryObject(key)](#AbstractConfig+loadNecessaryObject) ⇒ <code>Promise</code> \| <code>Object</code>
     * [.loadNecessaryFile(key, [onlyCheckDirectory])](#AbstractConfig+loadNecessaryFile) ⇒ <code>Promise</code> \| <code>String</code>
     * [.loadNecessaryDirectory(key, [endWithSeparator])](#AbstractConfig+loadNecessaryDirectory) ⇒ <code>Promise</code> \| <code>String</code>
@@ -171,12 +189,20 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 
 ### new ConsulConfig(option)
 
-| Param | Type | Description |
-| --- | --- | --- |
-| option | <code>Object</code> |  |
-| option.consulAddr | <code>String</code> | The consul address, in the format of `ip:port`。 |
-| option.pathPrefix | <code>String</code> | The prefix of consul key element. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| option | <code>Object</code> |  |  |
+| option.consulAddr | <code>String</code> |  | The consul address, in the format of `ip:port`。 |
+| option.pathPrefix | <code>String</code> |  | The prefix of consul key element. |
+| [option.timeoutMs] | <code>Number</code> | <code>5000</code> | The timeout milliseconds for consul request. |
 
+<a name="AbstractConfig+getAllConfig"></a>
+
+### consulConfig.getAllConfig() ⇒ <code>Map.&lt;String, ?&gt;</code>
+Get all loaded config
+
+**Kind**: instance method of [<code>ConsulConfig</code>](#ConsulConfig)  
+**Overrides**: [<code>getAllConfig</code>](#AbstractConfig+getAllConfig)  
 <a name="AbstractConfig+allLoaded"></a>
 
 ### consulConfig.allLoaded() ⇒ <code>Promise</code>
@@ -198,7 +224,7 @@ Get value by key
 
 <a name="AbstractConfig+loadNecessaryVar"></a>
 
-### consulConfig.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code>
+### consulConfig.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
 Get value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>ConsulConfig</code>](#ConsulConfig)  
@@ -210,7 +236,7 @@ Get value by key, the value must be exist, otherwise the process will exit.
 
 <a name="AbstractConfig+loadNecessaryString"></a>
 
-### consulConfig.loadNecessaryString(key) ⇒ <code>String</code>
+### consulConfig.loadNecessaryString(key) ⇒ <code>String</code> \| <code>Promise</code>
 Get string value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>ConsulConfig</code>](#ConsulConfig)  
@@ -222,7 +248,7 @@ Get string value by key, the value must be exist, otherwise the process will exi
 
 <a name="AbstractConfig+loadNecessaryInt"></a>
 
-### consulConfig.loadNecessaryInt(key) ⇒ <code>Integer</code>
+### consulConfig.loadNecessaryInt(key) ⇒ <code>Integer</code> \| <code>Promise</code>
 Get integer value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>ConsulConfig</code>](#ConsulConfig)  
@@ -285,17 +311,18 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 
 <a name="ConsulConfigSync"></a>
 
-## ConsulConfigSync ⇐ [<code>AbstractConfig</code>](#AbstractConfig)
+## ConsulConfigSync ⇐ [<code>JsonConfig</code>](#JsonConfig)
 **Kind**: global class  
-**Extends**: [<code>AbstractConfig</code>](#AbstractConfig)  
+**Extends**: [<code>JsonConfig</code>](#JsonConfig)  
 
-* [ConsulConfigSync](#ConsulConfigSync) ⇐ [<code>AbstractConfig</code>](#AbstractConfig)
+* [ConsulConfigSync](#ConsulConfigSync) ⇐ [<code>JsonConfig</code>](#JsonConfig)
     * [new ConsulConfigSync(option)](#new_ConsulConfigSync_new)
+    * [.getAllConfig()](#AbstractConfig+getAllConfig) ⇒ <code>Map.&lt;String, ?&gt;</code>
     * [.allLoaded()](#AbstractConfig+allLoaded) ⇒ <code>Promise</code>
     * [.loadVar(key)](#AbstractConfig+loadVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
-    * [.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code>
-    * [.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code>
-    * [.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code>
+    * [.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
+    * [.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code> \| <code>Promise</code>
+    * [.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code> \| <code>Promise</code>
     * [.loadNecessaryObject(key)](#AbstractConfig+loadNecessaryObject) ⇒ <code>Promise</code> \| <code>Object</code>
     * [.loadNecessaryFile(key, [onlyCheckDirectory])](#AbstractConfig+loadNecessaryFile) ⇒ <code>Promise</code> \| <code>String</code>
     * [.loadNecessaryDirectory(key, [endWithSeparator])](#AbstractConfig+loadNecessaryDirectory) ⇒ <code>Promise</code> \| <code>String</code>
@@ -305,13 +332,22 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 
 ### new ConsulConfigSync(option)
 
-| Param | Type | Description |
-| --- | --- | --- |
-| option | <code>Object</code> |  |
-| option.consulAddr | <code>String</code> | The consul address, in the format of `ip:port`. |
-| option.pathPrefix | <code>String</code> | The prefix of consul key element. |
-| option.keys | <code>Array.&lt;String&gt;</code> | The consul keys' name. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| option | <code>Object</code> |  |  |
+| option.consulAddr | <code>String</code> |  | The consul address, in the format of `ip:port`. |
+| option.pathPrefix | <code>String</code> |  | The prefix of consul key element. |
+| option.keys | <code>Array.&lt;String&gt;</code> |  | The consul keys' name. |
+| [option.timeout4RequestConsulMs] | <code>Number</code> | <code>5000</code> | The timeout milliseconds for consul request. |
+| [option.retryLimit] | <code>Number</code> | <code>0</code> | The retry times before getting data from consul failed. The default is `0`, which means no limit. |
 
+<a name="AbstractConfig+getAllConfig"></a>
+
+### consulConfigSync.getAllConfig() ⇒ <code>Map.&lt;String, ?&gt;</code>
+Get all loaded config
+
+**Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
+**Overrides**: [<code>getAllConfig</code>](#AbstractConfig+getAllConfig)  
 <a name="AbstractConfig+allLoaded"></a>
 
 ### consulConfigSync.allLoaded() ⇒ <code>Promise</code>
@@ -333,7 +369,7 @@ Get value by key
 
 <a name="AbstractConfig+loadNecessaryVar"></a>
 
-### consulConfigSync.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code>
+### consulConfigSync.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
 Get value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
@@ -345,7 +381,7 @@ Get value by key, the value must be exist, otherwise the process will exit.
 
 <a name="AbstractConfig+loadNecessaryString"></a>
 
-### consulConfigSync.loadNecessaryString(key) ⇒ <code>String</code>
+### consulConfigSync.loadNecessaryString(key) ⇒ <code>String</code> \| <code>Promise</code>
 Get string value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
@@ -357,7 +393,7 @@ Get string value by key, the value must be exist, otherwise the process will exi
 
 <a name="AbstractConfig+loadNecessaryInt"></a>
 
-### consulConfigSync.loadNecessaryInt(key) ⇒ <code>Integer</code>
+### consulConfigSync.loadNecessaryInt(key) ⇒ <code>Integer</code> \| <code>Promise</code>
 Get integer value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>ConsulConfigSync</code>](#ConsulConfigSync)  
@@ -426,11 +462,12 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 
 * [JsonConfig](#JsonConfig) ⇐ [<code>AbstractConfig</code>](#AbstractConfig)
     * [new JsonConfig(option)](#new_JsonConfig_new)
+    * [.getAllConfig()](#AbstractConfig+getAllConfig) ⇒ <code>Map.&lt;String, ?&gt;</code>
     * [.allLoaded()](#AbstractConfig+allLoaded) ⇒ <code>Promise</code>
     * [.loadVar(key)](#AbstractConfig+loadVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
-    * [.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code>
-    * [.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code>
-    * [.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code>
+    * [.loadNecessaryVar(key)](#AbstractConfig+loadNecessaryVar) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
+    * [.loadNecessaryString(key)](#AbstractConfig+loadNecessaryString) ⇒ <code>String</code> \| <code>Promise</code>
+    * [.loadNecessaryInt(key)](#AbstractConfig+loadNecessaryInt) ⇒ <code>Integer</code> \| <code>Promise</code>
     * [.loadNecessaryObject(key)](#AbstractConfig+loadNecessaryObject) ⇒ <code>Promise</code> \| <code>Object</code>
     * [.loadNecessaryFile(key, [onlyCheckDirectory])](#AbstractConfig+loadNecessaryFile) ⇒ <code>Promise</code> \| <code>String</code>
     * [.loadNecessaryDirectory(key, [endWithSeparator])](#AbstractConfig+loadNecessaryDirectory) ⇒ <code>Promise</code> \| <code>String</code>
@@ -445,6 +482,13 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 | option | <code>Object</code> |  |
 | option.configObject | <code>Object</code> | The Json object. |
 
+<a name="AbstractConfig+getAllConfig"></a>
+
+### jsonConfig.getAllConfig() ⇒ <code>Map.&lt;String, ?&gt;</code>
+Get all loaded config
+
+**Kind**: instance method of [<code>JsonConfig</code>](#JsonConfig)  
+**Overrides**: [<code>getAllConfig</code>](#AbstractConfig+getAllConfig)  
 <a name="AbstractConfig+allLoaded"></a>
 
 ### jsonConfig.allLoaded() ⇒ <code>Promise</code>
@@ -466,7 +510,7 @@ Get value by key
 
 <a name="AbstractConfig+loadNecessaryVar"></a>
 
-### jsonConfig.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code>
+### jsonConfig.loadNecessaryVar(key) ⇒ <code>String</code> \| <code>Object</code> \| <code>Promise</code>
 Get value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>JsonConfig</code>](#JsonConfig)  
@@ -478,7 +522,7 @@ Get value by key, the value must be exist, otherwise the process will exit.
 
 <a name="AbstractConfig+loadNecessaryString"></a>
 
-### jsonConfig.loadNecessaryString(key) ⇒ <code>String</code>
+### jsonConfig.loadNecessaryString(key) ⇒ <code>String</code> \| <code>Promise</code>
 Get string value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>JsonConfig</code>](#JsonConfig)  
@@ -490,7 +534,7 @@ Get string value by key, the value must be exist, otherwise the process will exi
 
 <a name="AbstractConfig+loadNecessaryInt"></a>
 
-### jsonConfig.loadNecessaryInt(key) ⇒ <code>Integer</code>
+### jsonConfig.loadNecessaryInt(key) ⇒ <code>Integer</code> \| <code>Promise</code>
 Get integer value by key, the value must be exist, otherwise the process will exit.
 
 **Kind**: instance method of [<code>JsonConfig</code>](#JsonConfig)  
@@ -556,13 +600,15 @@ Get URL by key, the value must be exist, otherwise the process will exit.
 ## getConfigFromConsulSync(option)
 **Kind**: global function  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| option | <code>Object</code> |  |
-| option.consulAddr | <code>String</code> | The consul address, in the format of `ip:port`. |
-| option.pathPrefix | <code>String</code> | The prefix of consul key element. |
-| option.savePath | <code>String</code> | The full path name of the generated config file. |
-| option.keys | <code>Array.&lt;String&gt;</code> | The consul keys' name. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| option | <code>Object</code> |  |  |
+| option.consulAddr | <code>String</code> |  | The consul address, in the format of `ip:port`. |
+| option.pathPrefix | <code>String</code> |  | The prefix of consul key element. |
+| option.savePath | <code>String</code> |  | The full path name of the generated config file. |
+| option.keys | <code>Array.&lt;String&gt;</code> |  | The consul keys' name. |
+| [option.timeoutMs] | <code>Number</code> | <code>5000</code> | The timeout milliseconds for consul request. |
+| [option.retryLimit] | <code>Number</code> | <code>0</code> | The retry times before getting data from consul failed. The default is `0`, which means no limit. |
 
 <a name="KeyItem"></a>
 
