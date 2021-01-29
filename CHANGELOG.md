@@ -1,3 +1,9 @@
+# v2.3.0
+## Add
+1. Add parameter `timeout4RequestConsulMs` `retryLimit` to class `ConsulConfigSync`.
+2. Add parameter `waitTimeBeforeThrowErrorMs` to class `AbstractConfig`.
+3. Add method `getAllConfig` to class `AbstractConfig`.
+
 # v2.2.0
 ## Add
 1. Add class `ConsulConfigSync` to load config in synchronized way.
