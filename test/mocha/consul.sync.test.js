@@ -18,4 +18,12 @@ describe('sync consul config test',function() {
         const int = settings.loadNecessaryInt('int');
         expect(int).to.be.equal(configObject.int);
     });
+
+    it('should get empty value when not exist in consul', function() {
+        const config = ({consulAddr,pathPrefix,  keys: ['abcdefg']});
+
+        const settings = new ConsulSyncConfig(config);
+        var varstr = settings.loadVar('abcdefg');
+        expect(varstr).to.be.undefined;
+    });
 });

@@ -1,3 +1,8 @@
+# v2.3.1
+## Fix
+
+1. Fix the error when consul return empty data.
+
 # v2.3.0
 ## Add
 1. Add parameter `timeout4RequestConsulMs` `retryLimit` to class `ConsulConfigSync`.

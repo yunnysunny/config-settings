@@ -66,6 +66,16 @@ settings.allLoaded().then(function() {
 });
 ```
 
+### Use the ConsulSyncConfig
+
+```javascript
+const {ConsulSyncConfig} = require('config-settings');
+const settings = new ConsulConfig({consulAddr:'127.0.0.1:8500', keys: ['var', 'integer']});
+
+const varstr =  settings.loadNecessaryVar('var');
+const integer =  settings.loadNecessaryVar('integer');
+```
+
 **Attention**
 
 When call the function start with `loadNecessary` failed, the module will throw Error in asynchronous way.
