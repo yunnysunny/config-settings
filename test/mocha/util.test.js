@@ -4,6 +4,7 @@ var expect = chai.expect;
 const {util, JsonConfig} = require('../..');
 const configObject = require('../config.json');
 const {CONSUL_PATH_PREFIX} = require('./before');
+const {schema} = require('./config');
 const consulAddr = process.env.CONSUL_SERVER;
 const pathPrefix = CONSUL_PATH_PREFIX;
 
@@ -16,8 +17,8 @@ describe('util test',function() {
 
         expect(status).to.be.equal(0);
         const loadedConfig = require(savePath);
-        const settings = new JsonConfig({configObject: loadedConfig});
-        var varstr = settings.loadNecessaryVar('var');
+        const settings = new JsonConfig({configObject: loadedConfig, schema});
+        var varstr = settings.getValue('var');
         expect(varstr).to.be.exist;
     });
 });

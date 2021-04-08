@@ -12,7 +12,12 @@ exports.forkChild = function(type, obj) {
         });
         let hasDone = false;
         child.stdout.setEncoding('utf8');
+        child.stderr.on('data', function(data) {
+            // eslint-disable-next-line no-console
+            console.error('error from child', data.toString());
+        });
         child.stdout.on('data', function(data){
+            slogger.trace('stdout child',data);
             if ((data).indexOf('ERROR') !== -1 && !hasDone) {
                 hasDone = true;
                 return done();
