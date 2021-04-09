@@ -49,7 +49,9 @@ const jsonConfig = new JsonConfig({
         'dir': {type:TYPE_DIRECTORY, required: true},
         'file': {type:TYPE_FILE, required: true},
         'int': {type:Number, required: true},
-        'url':{type:TYPE_URL, required: true},
+        'url':{type:TYPE_URL, required: true, afterParse: function(key, value, isFromWatch) {
+            console.log('the url is ', value);
+        }},
         'object': {
             type: {
                 'key1': {type:String, required: true}
@@ -74,7 +76,11 @@ const settings = new ConsulConfig({
         'dir': {type:TYPE_DIRECTORY, required: true},
         'file': {type:TYPE_FILE, required: true},
         'int': {type:Number, required: true},
-        'url':{type:TYPE_URL, required: true},
+        'url': {type:TYPE_URL, required: true, afterParse: function(key, value, isFromWatch) {
+            console.log('the url is ', value);
+        }, watch: function(error, key, value) {
+            console.log('the new url is ', value);
+        }},
         'object': {
             type: {
                 'key1': {type:String, required: true}
@@ -89,7 +95,7 @@ const integer =  settings.getValue('integer');
 
 **Attention**
 
-When call the function start with `loadNecessary` failed, the module will throw Error in asynchronous way.
+When one of element parse failed, the module will throw Error in asynchronous way.
 
 ## API
 

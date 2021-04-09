@@ -11,7 +11,7 @@ const pathPrefix = CONSUL_PATH_PREFIX;
 const keys = Object.keys(configObject).join(',');
 
 describe('util test',function() {
-    it('read config from consul  async', function() {
+    it('read config from consul sync', function() {
         const savePath = path.join(__dirname, './config.json');
         const {status} = util.getConfigFromConsulSync({consulAddr,pathPrefix, savePath, keys});
 

@@ -2,7 +2,7 @@ var chai = require('chai');
 var expect = chai.expect;
 const {ConsulSyncConfig} = require('../..');
 const configObject = require('../config.json');
-const {CONSUL_PATH_PREFIX} = require('./before');
+const {CONSUL_PATH_PREFIX, writeKV} = require('./before');
 const {schema} = require('./config');
 const consulAddr = process.env.CONSUL_SERVER;
 const pathPrefix = CONSUL_PATH_PREFIX;
@@ -32,5 +32,27 @@ describe('sync consul config test',function() {
         const settings = new ConsulSyncConfig(config);
         var varstr = settings.getValue(emptyKey);
         expect(varstr).to.be.undefined;
+    });
+    it('watch test', function(done) {
+        const newSchema = {...schema};
+        const KEY_NAME = 'for_watch_key';
+
+        const newValue = 'abcd';
+        /**
+         * @function WatchFunction
+         */
+        function myWatch(error, key, value) {
+            expect(key).to.be.equal(KEY_NAME);
+            expect(value).to.be.equal(newValue);
+            done();
+        }
+        newSchema[KEY_NAME] = {
+            type: String,
+            watch: myWatch
+        };
+        const config = ({consulAddr,pathPrefix, schema: newSchema});
+
+        new ConsulSyncConfig(config);
+        writeKV(KEY_NAME, newValue);
     });
 });

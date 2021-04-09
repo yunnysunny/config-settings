@@ -24,3 +24,7 @@ before(function(done) {
         done();
     });
 });
+
+exports.writeKV = function(key, value, callback = function() {}) {
+    _consul.kv.set(CONSUL_PATH_PREFIX + key,  value).then(callback);
+};
