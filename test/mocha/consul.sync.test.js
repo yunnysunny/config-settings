@@ -36,14 +36,15 @@ describe('sync consul config test',function() {
     it('watch test', function(done) {
         const newSchema = {...schema};
         const KEY_NAME = 'for_watch_key';
-
-        const newValue = 'abcd';
+        let settings;
+        const newValue = '' + Math.random();
         /**
          * @function WatchFunction
          */
         function myWatch(error, key, value) {
             expect(key).to.be.equal(KEY_NAME);
             expect(value).to.be.equal(newValue);
+            expect(settings.getValue(KEY_NAME)).to.be.equal(newValue);
             done();
         }
         newSchema[KEY_NAME] = {
@@ -52,7 +53,7 @@ describe('sync consul config test',function() {
         };
         const config = ({consulAddr,pathPrefix, schema: newSchema});
 
-        new ConsulSyncConfig(config);
+        settings = new ConsulSyncConfig(config);
         writeKV(KEY_NAME, newValue);
     });
 });
