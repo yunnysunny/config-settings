@@ -14,7 +14,7 @@ exports.forkChild = function(type, obj) {
         child.stdout.setEncoding('utf8');
         child.stderr.on('data', function(data) {
             // eslint-disable-next-line no-console
-            console.error('error from child', data.toString());
+            // console.error('error from child', data.toString());
         });
         child.stdout.on('data', function(data){
             slogger.trace('stdout child',data);
