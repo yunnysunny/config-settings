@@ -13,8 +13,6 @@
 ## Functions
 
 <dl>
-<dt><a href="#WatchCallback">WatchCallback(err, data)</a></dt>
-<dd></dd>
 <dt><a href="#CustomParseFunction">CustomParseFunction(option)</a> ⇒ <code><a href="#ElementParsedResult">ElementParsedResult</a></code></dt>
 <dd></dd>
 <dt><a href="#AfterParseFunction">AfterParseFunction(key, newValue, isFromWatch)</a></dt>
@@ -58,6 +56,8 @@
 | option | <code>Object</code> |  |  |
 | option.consulAddr | <code>String</code> |  | The consul address, in the format of `ip:port`. |
 | option.pathPrefix | <code>String</code> |  | The prefix of consul key element. |
+| option.schema | [<code>Schema</code>](#Schema) |  | The schema object. |
+| [option.waitTimeBeforeThrowErrorMs] | <code>Number</code> | <code>0</code> | The wait time before trigger error when the value returned is not expected.  The default value is `0`, but it will throw the error in async way even if you set the parameter to `0`. |
 | [option.timeout4RequestConsulMs] | <code>Number</code> | <code>5000</code> | The timeout milliseconds for consul request. |
 | [option.retryLimit] | <code>Number</code> | <code>0</code> | The retry times before getting data from consul failed.  The default is `0`, which means no limit. |
 | [option.consulOption] | [<code>ConsulOption</code>](#ConsulOption) | <code>{}</code> | The consul option used to init a consul client. |
@@ -167,16 +167,6 @@ Parse all the config.
 | --- | --- |
 | params | <code>Object</code> | 
 
-<a name="WatchCallback"></a>
-
-## WatchCallback(err, data)
-**Kind**: global function  
-
-| Param | Type |
-| --- | --- |
-| err | <code>Error</code> | 
-| data | <code>String</code> | 
-
 <a name="CustomParseFunction"></a>
 
 ## CustomParseFunction(option) ⇒ [<code>ElementParsedResult</code>](#ElementParsedResult)
@@ -244,14 +234,14 @@ Parse all the config.
 **Kind**: global typedef  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| required | <code>Boolean</code> \| <code>Array</code> | indicate whether the current field necessary |
-| type | <code>Number</code> \| <code>JSON</code> \| <code>Date</code> \| <code>String</code> \| <code>Object</code> | declare the current field's type,  it can be `Number` `JSON` `String` `Parser.TYPE_FILE` `Parser.TYPE_DIRECTORY` `Parser.TYPE_URL` or an Object with properties. see |
-| custom | [<code>CustomParseFunction</code>](#CustomParseFunction) | the custom validate function |
-| options | <code>Object</code> | the extended options used to check validate. |
-| [afterParse] | [<code>AfterParseFunction</code>](#AfterParseFunction) | the function to do after parse. |
-| [watch] | [<code>WatchFunction</code>](#WatchFunction) | the function used in consul watch callback |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [required] | <code>Boolean</code> \| <code>Array</code> | <code>false</code> | indicate whether the current field necessary |
+| type | <code>Number</code> \| <code>JSON</code> \| <code>Date</code> \| <code>String</code> \| <code>Object</code> |  | declare the current field's type,  it can be `Number` `JSON` `String` `Parser.TYPE_FILE` `Parser.TYPE_DIRECTORY` `Parser.TYPE_URL` or an Object with properties. see |
+| [custom] | [<code>CustomParseFunction</code>](#CustomParseFunction) |  | the custom validate function |
+| [options] | <code>Object</code> |  | the extended options used to check validate. |
+| [afterParse] | [<code>AfterParseFunction</code>](#AfterParseFunction) |  | the function to do after parse. |
+| [watch] | [<code>WatchFunction</code>](#WatchFunction) |  | the function used in consul watch callback |
 
 <a name="Schema"></a>
 
