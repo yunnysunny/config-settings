@@ -12,8 +12,8 @@ before_script:
   - $CONSUL_DIR/consul agent -dev -bootstrap-expect 1 -data-dir /tmp/consul &
   # Wait for consul to elect itself as leader
   - sleep 5
-  - mkdir -p /home/travis/var/filename
   - mkdir -p /home/travis/var/xxx
+  - touch /home/travis/var/filename
 after_script: npm run coverage
 
 node_js:
