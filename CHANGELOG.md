@@ -1,3 +1,15 @@
+# v3.0.0
+
+## Breaking changes
+
+1. Remove all the functions of `JsonConfig` and `ConsulConfigSync`.
+2. Delete the class of `ConsulConfig`.
+
+## Add
+
+1. Add the ability of wathing the changes from consul.
+2. Add the schema parameter to restrict the input from json object or consul server, it may been transformed to the type you desired.
+
 # v2.3.1
 ## Fix
 
