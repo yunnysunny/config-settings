@@ -7,7 +7,7 @@
 
 [npm-url]: https://npmjs.org/package/config-settings
 [travis-image]: https://img.shields.io/travis/yunnysunny/config-settings.svg?style=flat-square
-[travis-url]: https://travis-ci.org/yunnysunny/config-settings
+[travis-url]: https://travis-ci.com/yunnysunny/config-settings
 [coveralls-image]: https://img.shields.io/coveralls/yunnysunny/config-settings.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/yunnysunny/config-settings?branch=master
 [david-image]: https://img.shields.io/david/yunnysunny/config-settings.svg?style=flat-square
