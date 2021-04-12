@@ -242,6 +242,7 @@ Parse all the config.
 | [options] | <code>Object</code> |  | the extended options used to check validate. |
 | [afterParse] | [<code>AfterParseFunction</code>](#AfterParseFunction) |  | the function to do after parse. |
 | [watch] | [<code>WatchFunction</code>](#WatchFunction) |  | the function used in consul watch callback |
+| [isWatchDisabled] | <code>Boolean</code> | <code>false</code> | whether disable watching the key's changes, default is false. |
 
 <a name="Schema"></a>
 

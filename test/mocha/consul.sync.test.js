@@ -1,4 +1,6 @@
 var chai = require('chai');
+const consul = require('consul');
+const sinon = require('sinon');
 var expect = chai.expect;
 const {ConsulSyncConfig} = require('../..');
 const configObject = require('../config.json');
@@ -53,7 +55,32 @@ describe('sync consul config test',function() {
         };
         const config = ({consulAddr,pathPrefix, schema: newSchema});
 
+        const keys = Object.keys(newSchema);
+        const spy = sinon.spy(consul.Watch.prototype, 'on');
         settings = new ConsulSyncConfig(config);
+        expect(spy.callCount).to.be.equal((keys.length) * 2);
+        consul.Watch.prototype.on.restore();
         writeKV(KEY_NAME, newValue);
+    });
+    it('not call watch test', function() {
+        const newSchema = {...schema};
+        const KEY_NAME = 'watch_disabled_key';
+        const spy = sinon.spy(consul.Watch.prototype, 'on');
+        /**
+         * @function WatchFunction
+         */
+        function myWatch() {
+        }
+        newSchema[KEY_NAME] = {
+            type: String,
+            watch: myWatch,
+            isWatchDisabled: true
+        };
+        const keys = Object.keys(newSchema);
+        const config = ({consulAddr,pathPrefix, schema: newSchema});
+
+        new ConsulSyncConfig(config);
+        expect(spy.callCount).to.be.equal((keys.length - 1) * 2);
+        consul.Watch.prototype.on.restore();
     });
 });
