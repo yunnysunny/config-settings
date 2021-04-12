@@ -216,6 +216,7 @@ Parse all the config.
 | option.keys | <code>Array.&lt;String&gt;</code> |  | The consul keys' name. |
 | [option.timeoutMs] | <code>Number</code> | <code>5000</code> | The timeout milliseconds for consul request. |
 | [option.retryLimit] | <code>Number</code> | <code>0</code> | The retry times before getting data from consul failed. The default is `0`, which means no limit. |
+| [option.consulOption] | [<code>ConsulOption</code>](#ConsulOption) | <code>{}</code> | The consul option used to init a consul client. |
 
 <a name="ConsulOption"></a>
 
