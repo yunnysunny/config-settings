@@ -115,7 +115,7 @@ describe('basic test:',function() {
         done();
     });
 
-    it('sub custom parse', function(done) {
+    it('sub after parse', function(done) {
         const newConfig = {...config};
         newConfig.schema = Object.assign({},schema, {
             'object': {
@@ -128,6 +128,24 @@ describe('basic test:',function() {
                 afterParse: function(key, value) {
                     expect(key).to.be.equal('object');
                     expect(value.key1).to.be.equal(configObject.object.key1);
+                    done();
+                }
+            }
+        });
+        new JsonConfig(newConfig);
+    });
+
+    it('preferred value', function(done) {
+        const newConfig = {...config};
+        const GIVEN_VALUE = 'ABC';
+        newConfig.schema = Object.assign({},schema, {
+            'keyx': {
+                type:String, 
+                required: true, 
+                preferredValue: GIVEN_VALUE,
+                afterParse: function(key, value) {
+                    expect(key).to.be.equal('keyx');
+                    expect(value).to.be.equal(GIVEN_VALUE);
                     done();
                 }
             }

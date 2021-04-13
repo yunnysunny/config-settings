@@ -1957,6 +1957,11 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
+typescript@^4.2.4:
+  version "4.2.4"
+  resolved "https://registry.npm.taobao.org/typescript/download/typescript-4.2.4.tgz?cache=0&sync_timestamp=1618298573659&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
+  integrity sha1-hhC1l0feAo/aiYqK7w4QPxVtCWE=
+
 typical@^2.4.2, typical@^2.6.0, typical@^2.6.1:
   version "2.6.1"
   resolved "https://registry.npm.taobao.org/typical/download/typical-2.6.1.tgz#5c080e5d661cbbe38259d2e70a3c7253e873881d"

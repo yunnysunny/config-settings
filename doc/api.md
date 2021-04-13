@@ -30,7 +30,7 @@
 <dd></dd>
 <dt><a href="#SchemaElement">SchemaElement</a></dt>
 <dd></dd>
-<dt><a href="#Schema">Schema</a></dt>
+<dt><a href="#Schema">Schema</a> : <code>Object.&lt;string, SchemaElement&gt;</code></dt>
 <dd></dd>
 <dt><a href="#ElementParsedResult">ElementParsedResult</a></dt>
 <dd></dd>
@@ -127,19 +127,20 @@ The class of Validator
 **Kind**: global class  
 
 * [Parser](#Parser)
-    * [new Parser(schema)](#new_Parser_new)
+    * [new Parser(option)](#new_Parser_new)
     * [.doParseElement(option)](#Parser+doParseElement) ⇒ [<code>ElementParsedResult</code>](#ElementParsedResult)
     * [.doParse(params)](#Parser+doParse) ⇒ <code>Object</code>
 
 <a name="new_Parser_new"></a>
 
-### new Parser(schema)
+### new Parser(option)
 Creates an instance of Validator.
 
 
 | Param | Type |
 | --- | --- |
-| schema | [<code>Schema</code>](#Schema) | 
+| option | <code>Object</code> | 
+| option.schema | [<code>Schema</code>](#Schema) | 
 
 <a name="Parser+doParseElement"></a>
 
@@ -222,8 +223,9 @@ Parse all the config.
 
 ## ConsulOption
 **Kind**: global typedef  
+**Properties**
 
-| Param | Type | Default | Description |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | [secure] | <code>Boolean</code> | <code>false</code> | enable HTTPS |
 | [ca] | <code>Array.&lt;String&gt;</code> |  | array of strings or Buffers of trusted certificates in PEM format |
@@ -247,14 +249,8 @@ Parse all the config.
 
 <a name="Schema"></a>
 
-## Schema
+## Schema : <code>Object.&lt;string, SchemaElement&gt;</code>
 **Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| filedName | [<code>SchemaElement</code>](#SchemaElement) | 
-
 **Example**  
 ```javascript{  numberFiled : {    required:true,    type : Number,    options: {     gte: 10,     lte: 1    },    afterParse: function(value) {}  }}```
 **Example**  
