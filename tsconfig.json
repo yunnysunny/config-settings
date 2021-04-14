@@ -1,6 +1,6 @@
 {
     // Change this to match your project
-    "include": ["index.js"],
+    "include": ["lib/*.js"],
     "compilerOptions": {
       // Tells TypeScript to read JS files, as
       // normally they are ignored as source files
@@ -15,5 +15,13 @@
       // next to the .js files
       //"outDir": "dist"
       "outFile": "index.d.ts"
+    },
+    "typedocOptions": {
+      "entryPoints": [
+        "lib/ConsulConfigSync.js",
+        "lib/Parser.js",
+        "lib/JsonConfig.js"
+      ],
+      "out": "docs"
     }
   }

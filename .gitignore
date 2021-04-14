@@ -2,3 +2,5 @@
 /.vscode
 /test/mocha/config.json
 /.nyc_output
+*.log
+.DS_Store

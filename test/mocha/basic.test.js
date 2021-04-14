@@ -142,9 +142,29 @@ describe('basic test:',function() {
             'keyx': {
                 type:String, 
                 required: true, 
-                preferredValue: GIVEN_VALUE,
+                preferred: GIVEN_VALUE,
                 afterParse: function(key, value) {
                     expect(key).to.be.equal('keyx');
+                    expect(value).to.be.equal(GIVEN_VALUE);
+                    done();
+                }
+            }
+        });
+        new JsonConfig(newConfig);
+    });
+
+    it('preferred function value', function(done) {
+        const newConfig = {...config};
+        const GIVEN_VALUE = '123';
+        newConfig.schema = Object.assign({},schema, {
+            'keyy': {
+                type:String, 
+                required: true, 
+                preferred: function() {
+                    return GIVEN_VALUE;
+                },
+                afterParse: function(key, value) {
+                    expect(key).to.be.equal('keyy');
                     expect(value).to.be.equal(GIVEN_VALUE);
                     done();
                 }

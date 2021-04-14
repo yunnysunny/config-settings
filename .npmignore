@@ -1,0 +1,5 @@
+docs
+.nyc_output
+.vscode
+.DS_Store
+*.log

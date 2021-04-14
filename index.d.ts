@@ -31,7 +31,7 @@ declare module "lib/Parser" {
      * it can be a string or an object,
      * and the first value is normal value as used without array.
      *
-     * @property {*} [preferredValue] when it not empty , it will be used instend of the value get from consul or json object.
+     * @property {*} [preferred] when it not empty , it will be used instend of the value get from consul or json object.
      * @property {Boolean|Array} [required=false] indicate whether the current field necessary
      * @property {Number|JSON|Date|String|Object} type declare the current field's type,
      * it can be `Number` `JSON` `String` `Parser.TYPE_FILE` `Parser.TYPE_DIRECTORY` `Parser.TYPE_URL` or an Object with properties. see
@@ -151,7 +151,7 @@ declare module "lib/Parser" {
         /**
          * when it not empty , it will be used instend of the value get from consul or json object.
          */
-        preferredValue?: any;
+        preferred?: any;
         /**
          * indicate whether the current field necessary
          */

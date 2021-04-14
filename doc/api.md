@@ -239,6 +239,7 @@ Parse all the config.
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| [preferred] | <code>\*</code> \| <code>function</code> |  | when it not empty , it will been used instead of the value get from consul or json object. It can be an function or a value of type of String/Number/Object etc. |
 | [required] | <code>Boolean</code> \| <code>Array</code> | <code>false</code> | indicate whether the current field necessary |
 | type | <code>Number</code> \| <code>JSON</code> \| <code>Date</code> \| <code>String</code> \| <code>Object</code> |  | declare the current field's type,  it can be `Number` `JSON` `String` `Parser.TYPE_FILE` `Parser.TYPE_DIRECTORY` `Parser.TYPE_URL` or an Object with properties. see |
 | [custom] | [<code>CustomParseFunction</code>](#CustomParseFunction) |  | the custom validate function |

@@ -1,3 +1,9 @@
+# v3.1.0
+
+## Add
+
+1. Add preferred property to `Schema`, which used to give the default value of one element.
+
 # v3.0.0
 
 ## Breaking changes
