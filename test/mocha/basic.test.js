@@ -125,8 +125,7 @@ describe('basic test:',function() {
                         required: true, 
                     }
                 },
-                afterParse: function(key, value) {
-                    expect(key).to.be.equal('object');
+                afterParse: function(value) {
                     expect(value.key1).to.be.equal(configObject.object.key1);
                     done();
                 }
@@ -143,8 +142,7 @@ describe('basic test:',function() {
                 type:String, 
                 required: true, 
                 preferred: GIVEN_VALUE,
-                afterParse: function(key, value) {
-                    expect(key).to.be.equal('keyx');
+                afterParse: function(value) {
                     expect(value).to.be.equal(GIVEN_VALUE);
                     done();
                 }
@@ -163,8 +161,7 @@ describe('basic test:',function() {
                 preferred: function() {
                     return GIVEN_VALUE;
                 },
-                afterParse: function(key, value) {
-                    expect(key).to.be.equal('keyy');
+                afterParse: function(value) {
                     expect(value).to.be.equal(GIVEN_VALUE);
                     done();
                 }

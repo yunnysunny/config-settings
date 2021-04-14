@@ -1,6 +1,6 @@
 {
   "name": "config-settings",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Reading configuration from json file or consul.",
   "main": "index.js",
   "scripts": {

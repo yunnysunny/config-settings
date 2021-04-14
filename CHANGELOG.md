@@ -1,3 +1,9 @@
+# v3.2.0
+
+## Modify
+
+1. Remove the parameter of key from the callback of `AfterParseFunction`.
+
 # v3.1.0
 
 ## Add

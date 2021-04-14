@@ -15,7 +15,7 @@
 <dl>
 <dt><a href="#CustomParseFunction">CustomParseFunction(option)</a> ⇒ <code><a href="#ElementParsedResult">ElementParsedResult</a></code></dt>
 <dd></dd>
-<dt><a href="#AfterParseFunction">AfterParseFunction(key, newValue, isFromWatch)</a></dt>
+<dt><a href="#AfterParseFunction">AfterParseFunction(newValue, isFromWatch)</a></dt>
 <dd></dd>
 <dt><a href="#WatchFunction">WatchFunction(error, key, newValue)</a></dt>
 <dd></dd>
@@ -183,12 +183,11 @@ Parse all the config.
 
 <a name="AfterParseFunction"></a>
 
-## AfterParseFunction(key, newValue, isFromWatch)
+## AfterParseFunction(newValue, isFromWatch)
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| key | <code>String</code> | 
 | newValue | <code>\*</code> | 
 | isFromWatch | <code>Boolean</code> | 
 
