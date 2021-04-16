@@ -41,6 +41,8 @@ npm install config-settings --save
 ```javascript
 const config = require('../config.json');
 const {JsonConfig} = require('config-settings');
+// All the property of one schema element, can be found there: 
+//https://github.com/yunnysunny/config-settings/blob/master/doc/api.md#schemaelement
 const jsonConfig = new JsonConfig({
     configObject:config,
     schema: {
