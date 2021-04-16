@@ -7,7 +7,7 @@
 
 [npm-url]: https://npmjs.org/package/config-settings
 [travis-image]: https://img.shields.io/travis/yunnysunny/config-settings.svg?style=flat-square
-[travis-url]: https://travis-ci.org/yunnysunny/config-settings
+[travis-url]: https://travis-ci.com/yunnysunny/config-settings
 [coveralls-image]: https://img.shields.io/coveralls/yunnysunny/config-settings.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/yunnysunny/config-settings?branch=master
 [david-image]: https://img.shields.io/david/yunnysunny/config-settings.svg?style=flat-square
@@ -41,44 +41,61 @@ npm install config-settings --save
 ```javascript
 const config = require('../config.json');
 const {JsonConfig} = require('config-settings');
-const jsonConfig = new JsonConfig(config);
-var varstr = jsonConfig.loadNecessaryVar('var');//get xxxx
-var integer = jsonConfig.loadNecessaryVar('integer');//get 111
-
-```
-
-### Use with ConsulConfig
-
-```javascript
-const {ConsulConfig} = require('config-settings');
-const settings = new ConsulConfig({consulAddr:'127.0.0.1:8500'});
-
-settings.loadNecessaryVar('var').then(function(value) {
-    const varstr =  value;
+const jsonConfig = new JsonConfig({
+    configObject:config,
+    schema: {
+        'var': {type:String, required: true},
+        'integer': {type:Number, required: true},
+        'dir': {type:TYPE_DIRECTORY, required: true},
+        'file': {type:TYPE_FILE, required: true},
+        'int': {type:Number, required: true},
+        'url':{type:TYPE_URL, required: true, afterParse: function(key, value, isFromWatch) {
+            console.log('the url is ', value);
+        }},
+        'object': {
+            type: {
+                'key1': {type:String, required: true}
+            }
+        }
+    }
 });
-settings.loadNecessaryVar('integer').then(function(value) {
-    const integer =  value;
-});
-settings.allLoaded().then(function() {
-    //all loading progress finished
-}).catch(function() {
+var varstr = jsonConfig.getValue('var');//get xxxx
+var integer = jsonConfig.getValue('integer');//get 111
 
-});
 ```
 
 ### Use the ConsulSyncConfig
 
 ```javascript
 const {ConsulSyncConfig} = require('config-settings');
-const settings = new ConsulConfig({consulAddr:'127.0.0.1:8500', keys: ['var', 'integer']});
+const settings = new ConsulConfig({
+    consulAddr:'127.0.0.1:8500', 
+    schema: {
+        'var': {type:String, required: true},
+        'integer': {type:Number, required: true},
+        'dir': {type:TYPE_DIRECTORY, required: true},
+        'file': {type:TYPE_FILE, required: true},
+        'int': {type:Number, required: true},
+        'url': {type:TYPE_URL, required: true, afterParse: function(key, value, isFromWatch) {
+            console.log('the url is ', value);
+        }, watch: function(error, key, value) {
+            console.log('the new url is ', value);
+        }},
+        'object': {
+            type: {
+                'key1': {type:String, required: true}
+            }
+        }
+    }
+});
 
-const varstr =  settings.loadNecessaryVar('var');
-const integer =  settings.loadNecessaryVar('integer');
+const varstr =  settings.getValue('var');
+const integer =  settings.getValue('integer');
 ```
 
 **Attention**
 
-When call the function start with `loadNecessary` failed, the module will throw Error in asynchronous way.
+When one of element parse failed, the module will throw Error in asynchronous way.
 
 ## API
 
